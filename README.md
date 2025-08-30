@@ -16,3 +16,4 @@ A simple web-based application to record and manage daily expenses.
 1. Clone this repository:  
    ```bash
    git clone https://github.com/Abc319634/Personal-Expense-Tracker.git
+2. Open the index.html file in browser
