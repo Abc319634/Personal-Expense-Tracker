@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(100deg, #20c997, #b9a3e2);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(130deg, #422d5dcd, #22a6c4);
+            color: blanchedalmond;
+            padding: 15px;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: whitesmoke;
+            border-radius: 10px;
+            box-shadow: 1px 2px 5px black; 
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(100deg, rgb(77, 141, 220), rgb(196, 247, 95));
+            color: beige;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 2px solid black;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background: linear-gradient(100deg, rgb(138, 47, 241), rgb(230, 8, 34));
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: palegoldenrod;
+            color: black;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>Personal Expense Tracker</header>
+
+    <div class="container">
+        <label for="expense">Expense Name:</label>
+        <input type="text" id="expense" placeholder="e.g., Groceries">
+
+        <label for="amount">Amount (₹):</label>
+        <input type="number" id="amount" placeholder="e.g., 500">
+
+        <label for="category">Category:</label>
+        <select id="category">
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Others</option>
+        </select>
+
+        <button id="add_Expense">Add Expense</button>
+
+        <table>
+            <tr>
+                <th>Expense</th>
+                <th>Amount</th>
+                <th>Category</th>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
+<script>
+    document.querySelector('button').addEventListener('click', function () {
+        const expense = document.getElementById('expense').value.trim();
+        const amount = document.getElementById('amount').value.trim();
+        const category = document.getElementById('category').value;
+
+        if (!expense || !amount) {
+            alert('Please enter both expense name and amount');
+            return;
+        }
+
+        const table = document.querySelector('table');
+        const newRow = table.insertRow();
+
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+
+        cell1.textContent = expense;
+        cell2.textContent = '₹' + amount;
+        cell3.textContent = category;
+
+        document.getElementById('expense').value = '';
+        document.getElementById('amount').value = '';
+        document.getElementById('category').selectedIndex = 0;
+    });
+</script>
